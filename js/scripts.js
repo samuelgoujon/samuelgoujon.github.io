@@ -62,7 +62,6 @@
       .collapse('toggle');
     });
 
-    $(document).ready(function() {
     // Get each ul
     $("#bookmarks li").each(function() {
         // Get the content
@@ -74,6 +73,4 @@
         // Echo link
         $(this).html(replaced_text);
         });
-    });
-  });
 })(jQuery); // End of use strict
