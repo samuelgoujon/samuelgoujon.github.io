@@ -60,6 +60,7 @@
       .find('.collapse.show')
       .not(this)
       .collapse('toggle');
+    });
 
     $(document).ready(function() {
     // Get each ul
