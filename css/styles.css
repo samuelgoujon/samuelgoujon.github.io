@@ -167,7 +167,7 @@ a {
   background-color: transparent;
 }
 a:hover {
-  color: #467370;
+  color: #666666;
   text-decoration: underline;
 }
 
@@ -2988,7 +2988,7 @@ fieldset:disabled a.btn {
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #467370;
+  color: #666666;
   text-decoration: underline;
 }
 .btn-link:focus, .btn-link.focus {
@@ -4466,7 +4466,7 @@ input[type=button].btn-block {
 }
 .page-link:hover {
   z-index: 2;
-  color: #467370;
+  color: #666666;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -9701,7 +9701,7 @@ button.bg-black:focus {
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #467370 !important;
+  color: #666666 !important;
 }
 
 .text-secondary {
@@ -9979,7 +9979,7 @@ body {
     color: #000;
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: #666666;
   }
   #mainNav.navbar-shrink .nav-link.active {
     color: #000;
@@ -9999,4 +9999,36 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+}
+
+span:before, span:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: #fff;
+}
+
+span:before {
+  left: -2.5px;
+}
+
+span:after {
+  right: 2.5px;
+  background: #fff;
+  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:before {
+  background: #fff;
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
 }
