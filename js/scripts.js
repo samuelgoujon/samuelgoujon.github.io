@@ -72,5 +72,14 @@
         var replaced_text = str.replace(regex, "<a href='$1'>$1</a>");
         // Echo link
         $(this).html(replaced_text);
-        });
+    });
+/*
+    $('#alternative td').each(function(){
+        var textArray = $(this).html().split(',');
+        var html = '';
+        for(var i = 0; i < textArray.length; i++) {
+            html += '<span style="background-color: #000' + i + '">' + textArray[i] + '</span>';
+        }
+        $(this).html(html);
+    }*/
 })(jQuery); // End of use strict

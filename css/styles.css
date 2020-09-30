@@ -10032,3 +10032,15 @@ span:hover:after {
   width: 100%;
   transition: 0s;
 }
+
+table tr td:nth-child(3) a {
+    padding: 5px;
+}
+
+table td:nth-child(3) a:hover {
+    color: white;
+    background-color: #000;
+    border-radius: 15px;
+    padding: 5px;
+    text-decoration: none;
+}
