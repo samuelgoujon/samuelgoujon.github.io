@@ -69,17 +69,20 @@
         // Select url only
         var regex = /(^https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\\?\S+)?)?)?)/igm
         // Replace plain text links by hyperlinks
-        var replaced_text = str.replace(regex, "<a href='$1'>$1</a>");
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
         // Echo link
         $(this).html(replaced_text);
     });
-/*
-    $('#alternative td').each(function(){
-        var textArray = $(this).html().split(',');
-        var html = '';
-        for(var i = 0; i < textArray.length; i++) {
-            html += '<span style="background-color: #000' + i + '">' + textArray[i] + '</span>';
-        }
-        $(this).html(html);
-    }*/
+
+    var cell = $("td");
+    cell
+    .on("mouseenter", function() {
+        var el = $(this),
+        pos = el.index();
+
+        el.parent().find("td:nth-child(1)").css("text-decoration", "line-through");
+        })
+    .on("mouseleave", function() {
+        cell.css("text-decoration", "none");
+    });
 })(jQuery); // End of use strict
