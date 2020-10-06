@@ -1679,7 +1679,7 @@ pre code {
   width: 100%;
   margin-bottom: 1rem;
   color: #212529;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   table-layout: fixed;
 }
 .table th,
@@ -9999,38 +9999,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-}
-
-span:before, span:after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 1px;
-  top: 50%;
-  margin-top: -0.5px;
-  background: #fff;
-}
-
-span:before {
-  left: -2.5px;
-}
-
-span:after {
-  right: 2.5px;
-  background: #fff;
-  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-span:hover:before {
-  background: #fff;
-  width: 100%;
-  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-span:hover:after {
-  background: transparent;
-  width: 100%;
-  transition: 0s;
 }
 
 table td:nth-child(3) a {
