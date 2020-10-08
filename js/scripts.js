@@ -56,7 +56,7 @@
 
     // Collapse the cards
     $('.multi-collapse').on('show.bs.collapse', function () {
-    $(this).closest('.alternative')
+    $(this).closest('.bookmarks')
       .find('.collapse.show')
       .not(this)
       .collapse('toggle');
