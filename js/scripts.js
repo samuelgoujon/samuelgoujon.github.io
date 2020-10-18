@@ -67,11 +67,9 @@
         // Get the content
         var str = $(this).html();
         // Select url only
-        var regex = /(^https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\\?\S+)?)?)?)/igm
-        /* remove 'http://'
-        var link = regex.replace(/(^\w+:|^)\/\//, '');*/
+        var regex = /(^https?:\/\/(www.)?([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\\?\S+)?)?)?)/igm
         // Replace plain text links by hyperlinks
-        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$2</a>");
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$3</a>");
         // Echo link
         $(this).html(replaced_text);
     });
