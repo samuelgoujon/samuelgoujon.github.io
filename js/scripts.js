@@ -67,7 +67,7 @@
         // Get the content
         var str = $(this).html();
         // Select url only
-        var regex = /(^https?:\/\/(www.)?([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\\?\S+)?)?)?)/igm
+        var regex = /(^https?:\/\/(www\.)?([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\\?\S+)?)?)?)/igm
         // Replace plain text links by hyperlinks
         var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$3</a>");
         // Echo link
