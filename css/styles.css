@@ -2446,6 +2446,7 @@ textarea.form-control {
 }
 
 .btn {
+  text-transform: uppercase;
   display: inline-block;
   font-weight: 400;
   color: #212529;
