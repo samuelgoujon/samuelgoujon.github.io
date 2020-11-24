@@ -374,7 +374,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 h3, .h3 {
@@ -7271,7 +7271,7 @@ button.bg-black:focus {
 }
 
 .fixed-top {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -7282,6 +7282,14 @@ button.bg-black:focus {
   position: fixed;
   right: 0;
   bottom: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.absolute-top {
+  position: absolute;
+  top: 0;
+  right: 0;
   left: 0;
   z-index: 1030;
 }
@@ -9695,7 +9703,7 @@ button.bg-black:focus {
 }
 
 .text-white {
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .text-primary {
@@ -9912,37 +9920,37 @@ body {
   letter-spacing: 0.0625em;
 }
 
-#mainNav {
+#mainNav, #articleNav {
   min-height: 3.5rem;
   background-color: #fff;
 }
-#mainNav .navbar-toggler {
+#mainNav .navbar-toggler, #articleNav .navbar-toggler {
   font-size: 100%;
   padding: 0.75rem;
   color: #000;
   border: 1px solid #000;
 }
-#mainNav .navbar-toggler:focus {
+#mainNav .navbar-toggler:focus, #articleNav .navbar-toggler:focus {
   outline: none;
 }
-#mainNav .navbar-brand {
+#mainNav .navbar-brand, #articleNav .navbar-brand {
   color: #000000;
   font-weight: 700;
   padding: 0.9rem 0;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-#mainNav .navbar-nav .nav-item:hover {
+#mainNav .navbar-nav .nav-item:hover, #articleNav .navbar-nav .nav-item:hover{
   color: fade(#fff, 80%);
   outline: none;
   background-color: transparent;
 }
-#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
+#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus, #articleNav .navbar-nav .nav-item:active, #articleNav .navbar-nav .nav-item:focus {
   outline: none;
   background-color: transparent;
 }
 @media (min-width: 992px) {
-  #mainNav {
+  #mainNav, #articleNav {
     padding-top: 0;
     padding-bottom: 0;
     border-bottom: none;
@@ -9950,19 +9958,19 @@ body {
     transition: background-color 0.3s ease-in-out;
     text-transform: uppercase;
   }
-  #mainNav .navbar-brand {
+  #mainNav .navbar-brand, #articleNav .navbar-brand {
     padding: 0.5rem 0;
     color: #000;
   }
-  #mainNav .nav-link {
+  #mainNav .nav-link, #articleNav .nav-link {
     transition: none;
     padding: 2rem 1.5rem;
     color: #000;
   }
-  #mainNav .nav-link:hover {
+  #mainNav .nav-link:hover, #articleNav .nav-link:hover {
     color: rgba(0, 0, 0, 0.60);
   }
-  #mainNav .nav-link:active {
+  #mainNav .nav-link:active, #articleNav .nav-link:active {
     color: #fff;
   }
   #mainNav.navbar-shrink {
