@@ -226,11 +226,26 @@
                     <div class="col-lg-8 mx-auto text-center">
                         <h2 class="mb-5">Bookmarks</h2>
                             <p class="mb-5">
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ai" aria-expanded="true" aria-controls="ai">AI</button>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#social" aria-expanded="true" aria-controls="social">Social</button>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#services" aria-expanded="false" aria-controls="services">Services</button>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#goods" aria-expanded="false" aria-controls="goods">Goods</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#marketing" aria-expanded="false" aria-controls="marketing">Marketing</button>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multimedia" aria-expanded="false" aria-controls="multimedia">Multimedia</button>
                                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tech" aria-expanded="false" aria-controls="tech">Tech</button>
                             </p>
+                            <div class="collapse multi-collapse text-left" id="ai">
+                                <div class="card card-body text-left">
+                                    <ul class="list-unstyled">
+                                        <h4>Writing</h4>
+                                        <li>https://openai.com</li>
+                                        <li>https://www.deepl.com</li>
+                                        <h4>Graphics</h4>
+                                        <li>https://stablediffusionweb.com</li>
+                                        <li>https://clipdrop.co/stable-diffusion</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div class="collapse multi-collapse text-left" id="social">
                                 <div class="card card-body text-left">
                                     <ul class="list-unstyled">
@@ -308,7 +323,7 @@
                                       <li>https://ccfr.bnf.fr (Trouver un ouvrage dans les bibliothèques)</li>
                                       <li>https://www.pappers.fr</li>
                                       <li>https://archive.org/details/books</li>
-                                      <li>http://zlibrary24tuxziyiyfr7zd46ytefdqbqd2axkmxm4o5374ptpc52fad.onion</li>
+                                      <li><a href="http://zlibrary24tuxziyiyfr7zd46ytefdqbqd2axkmxm4o5374ptpc52fad.onion">Z-Library<a></li>
                                       <h4>Marketplaces</h4>
                                       <li>https://www.brocabrac.fr (Vide-greniers — FR)</li>
                                       <li>https://www.ozon.ru (RU)</li>
@@ -319,31 +334,49 @@
                                   </ul>
                                 </div>
                             </div>
-                            <div class="collapse multi-collapse text-left" id="tech">
+                            <div class="collapse multi-collapse text-left" id="marketing">
                                 <div class="card card-body text-left">
-                                    <ul id="tech" class="list-unstyled">
+                                    <ul class="list-unstyled">
+                                        <h4>SEO</h4>
+                                        <li>https://pagespeed.web.dev</li>
+                                        <li><a href="https://search.google.com/test/mobile-friendly">Mobile-Friendly Test<a></li>
+                                        <li><a href="https://search.google.com/search-console">Google Search Console<a></li>
                                         <h4>Email marketing</h4>
-                                        <li><a href="https://github.com/mailchimp/Email-Blueprints">Email Blueprints</a></li>
                                         <li><a href="https://toolbox.googleapps.com/apps/checkmx">Google CheckMX</a> (Email Testing Tools)</li>
-                                        <li><a href="https://litmus.com">Litmus</a> (Email Testing Tools)</li>
-                                        <h4>UX & SEO</h4>
+                                        <li><a href="https://github.com/mailchimp/Email-Blueprints">Email Blueprints</a></li>
+                                        <h4>UX</h4>
                                         <li>https://goodui.org (UX Best Practices)</li>
-                                        <li>https://developers.google.com/speed/pagespeed/insights</li>
-                                        <li>https://www.woorank.com</li>
-                                        <li>https://gtmetrix.com (Website’s speed)</li>
-                                        <li>https://www.alexa.com</li>
-                                        <h4>Editors</h4>
-                                        <li><a href="https://www.sublimetext.com">Sublime Text</a> (Code editor)</li>
-                                        <li><a href="https://www.finaldraft.com">Final Draft</a> (Screenwriting software)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse text-left" id="multimedia">
+                                <div class="card card-body text-left">
+                                    <ul class="list-unstyled">
                                         <h4>Graphics</h4>
                                         <li><a href="https://www.yworks.com/products/yed">yEd</a> (Graph Editor)</li>
                                         <li><a href="https://balsamiq.com">Balsamiq</a> (Mockups, Sketching)</li>
                                         <li><a href="https://www.adobe.com/express/feature/image/remove-background">Free image background remover</a></li>
+                                        <h4>Audio & Video</h4>
+                                        <li><a href="https://vlc-media-player.org">VLC media player</a> (Media Player)</li>
+                                        <li><a href="https://audacityteam.org">Audacity</a> (Audio editor)</li>
+                                        <li><a href="https://www.ableton.com/en/live/new-in-9">Live</a> (Digital audio workstation)</li>
+                                        <li><a href="https://www.steinberg.fr">Cubase — Nuendo</a> (Digital audio workstations)</li>
+                                        <h4>Video</h4>
+                                        <li><a href="https://www.avid.com">Avid Media Composer</a> (Non-linear editing system)</li>
+                                        <li><a href="https://www.adobe.com/products/premiere.html">Adobe Premiere Pro</a> (Non-linear editing system)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="collapse multi-collapse text-left" id="tech">
+                                <div class="card card-body text-left">
+                                    <ul id="tech" class="list-unstyled">
+                                        <h4>Editors</h4>
+                                        <li><a href="https://www.sublimetext.com">Sublime Text</a> (Code editor)</li>
+                                        <li><a href="https://www.finaldraft.com">Final Draft</a> (Screenwriting software)</li>
                                         <h4>Security</h4>
                                         <li><a href="https://www.privacytools.io">Privacy Tools</a> (Software Alternatives and Encryption)</li>
                                         <li><a href="https://bitwarden.com">Bitwarden</a> (Password manager)</li>
                                         <li><a href="https://www.torproject.org">Tor</a></li>
-                                        <li><a href="https://www.vyprvpn.com">VyprVPN</a> (VPN)</li>
                                         <li><a href="https://www.macupdate.com/app/mac/11582/onyx">OnyX</a> (Spyware for Mac)</li>
                                         <li><a href="https://objective-see.com/products/lulu.html">Lulu</a> (Firewall for Mac)</li>
                                         <li><a href="https://tails.boum.org">Tails</a> (Live Operating System)</li>
@@ -353,12 +386,6 @@
                                         <li>https://jsbeautifier.org</li>
                                         <li>https://jsonlint.com</li>
                                         <li>https://regex101.com</li>
-                                        <h4>Audio & Video</h4>
-                                        <li><a href="https://vlc-media-player.org">VLC media player</a> (Media Player)</li>
-                                        <li><a href="https://audacityteam.org">Audacity</a> (Audio editor)</li>
-                                        <li><a href="https://www.ableton.com/en/live/new-in-9">Live</a> (Digital audio workstation)</li>
-                                        <li><a href="https://www.steinberg.fr">Cubase — Nuendo</a> (Digital audio workstations)</li>
-                                        <li><a href="https://www.avid.com">Avid Media Composer</a> (Non-linear editing system)</li>
                                         <h4>Utilities</h4>
                                         <li>https://stackoverflow.com</li>
                                         <li><a href="https://www.android.com/filetransfer">Android File Transfer</a></li>
