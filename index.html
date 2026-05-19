@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samue Lowe</title>
+  <meta name="description" content="Samuel Lowe - Online privacy tools" />
+  <link rel="canonical" href="https://samueljeanlowe.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0e10;
+      --surface: #14161a;
+      --border: #23262e;
+      --text: #e8e6e0;
+      --muted: #6b6f7a;
+      --accent: #ffffff;
+      --tag-oss: #1a2e22;
+      --tag-oss-text: #6dbb8a;
+      --tag-hw: #1a1f34;
+      --tag-hw-text: #7a9fd4;
+      --tag-cn: #2e1a1a;
+      --tag-cn-text: #d46a6a;
+      --tag-ru: #1a1e2e;
+      --tag-ru-text: #6a8ad4;
+      --tag-fr: #1a2220;
+      --tag-fr-text: #6ab8a0;
+      --radius: 6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% -10%, #1e1a12 0%, transparent 70%);
+      pointer-events: none;
+    }
+    h1 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      position: relative;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      position: relative;
+    }
+
+        .social-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.4rem;
+      position: relative;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      padding: 8px;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .social-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .social-btn svg { width: 16px; height: 16px; flex-shrink: 0; display: block; }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .filter-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      margin-right: 4px;
+    }
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      padding: 5px 13px;
+      transition: all 0.15s;
+      letter-spacing: 0.04em;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn[data-tag="CN"].active  { background: var(--tag-cn-text);  border-color: var(--tag-cn-text);  color: #0d0e10; }
+    .filter-btn[data-tag="RU"].active  { background: var(--tag-ru-text);  border-color: var(--tag-ru-text);  color: #0d0e10; }
+    .filter-btn[data-tag="FR"].active  { background: var(--tag-fr-text);  border-color: var(--tag-fr-text);  color: #0d0e10; }
+    .filter-btn[data-tag="Open-source"].active { background: var(--tag-oss-text); border-color: var(--tag-oss-text); color: #0d0e10; }
+    .filter-btn[data-tag="Huawei AppGallery"].active { background: var(--tag-hw-text); border-color: var(--tag-hw-text); color: #0d0e10; }
+    .filter-btn#reset-btn { margin-left: auto; }
+
+    .search-wrap { margin-bottom: 1.6rem; }
+    #search {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      padding: 9px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #search::placeholder { color: var(--muted); }
+    #search:focus { border-color: var(--accent); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      padding: 0 14px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    thead th:first-child { padding-left: 0; }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+    tbody tr:hover { background: var(--surface); }
+    tbody tr.hidden { display: none; }
+    td { padding: 12px 14px; vertical-align: middle; }
+    td:first-child { padding-left: 0; font-weight: 500; color: #ffffff; font-size: 14px; width: 160px; }
+    td:nth-child(2) { font-family: 'DM Mono', monospace; font-size: 12px; width: 220px; }
+    td:nth-child(3) { font-size: 13px; color: var(--muted); }
+    td:last-child   { width: 220px; }
+    td a { color: #3498dc; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+    td a:hover { border-bottom-color: #3498dc; }
+
+    .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .tag {
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      padding: 2px 7px;
+    }
+    .tag-CN  { background: var(--tag-cn);  color: var(--tag-cn-text); }
+    .tag-RU  { background: var(--tag-ru);  color: var(--tag-ru-text); }
+    .tag-FR  { background: var(--tag-fr);  color: var(--tag-fr-text); }
+    .tag-OSS { background: var(--tag-oss); color: var(--tag-oss-text); }
+    .tag-HW  { background: var(--tag-hw);  color: var(--tag-hw-text); }
+
+    #empty { text-align: center; padding: 3rem 0; color: var(--muted); font-size: 14px; display: none; }
+    .counter { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 1rem; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Samue Lowe</h1>
+  <p class="subtitle">Online privacy tools</p>
+
+  <div class="social-bar">
+    <a class="social-btn" href="https://instagram.com/samueljeanlowe" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a class="social-btn" href="https://t.me/samueljeanlowe" target="_blank" rel="noopener" aria-label="Telegram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 5 2 12.5l7 1M21 5l-5 14-4.5-5.5M21 5 9 13.5m0 0 1.5 5.5"/>
+      </svg>
+    </a>
+    <a class="social-btn" href="https://vk.com/samueljeanlowe" target="_blank" rel="noopener" aria-label="VK">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+        <path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.019-1.304.587-1.496c.596-.189 1.365 1.261 2.18 1.818.614.422 1.08.33 1.08.33l2.17-.03s1.135-.07.597-1.111c-.044-.085-.312-.659-1.607-1.864-1.357-1.26-1.175-1.057.459-3.236.998-1.329 1.396-2.141 1.271-2.489-.119-.332-.854-.244-.854-.244l-2.44.015s-.181-.025-.315.055c-.132.078-.217.261-.217.261s-.386 1.025-.901 1.897c-1.085 1.843-1.52 1.94-1.698 1.825-.413-.267-.31-1.073-.31-1.645 0-1.789.271-2.533-.528-2.724-.266-.064-.461-.106-1.141-.113-.872-.009-1.609.003-2.026.207-.278.136-.492.44-.361.457.161.021.527.099.721.363.25.341.241 1.108.241 1.108s.143 2.108-.334 2.369c-.328.176-.777-.183-1.742-1.827-.495-.856-.869-1.803-.869-1.803s-.072-.177-.202-.272c-.157-.115-.377-.151-.377-.151l-2.319.015s-.348.01-.476.161c-.114.135-.009.414-.009.414s1.816 4.25 3.872 6.395c1.886 1.969 4.028 1.84 4.028 1.84h.972z"/>
+      </svg>
+    </a>
+    <a class="social-btn" href="https://github.com/samueljeanlowe" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="search-wrap">
+    <input type="search" id="search" placeholder="Search tools…" autocomplete="off" />
+  </div>
+
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn" data-tag="CN">CN</button>
+    <button class="filter-btn" data-tag="RU">RU</button>
+    <button class="filter-btn" data-tag="FR">FR</button>
+    <button class="filter-btn" data-tag="Open-source">Open-source</button>
+    <button class="filter-btn" data-tag="Huawei AppGallery">Huawei AppGallery</button>
+    <button class="filter-btn" id="reset-btn">All</button>
+  </div>
+
+  <p class="counter" id="counter"></p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>URL</th>
+          <th>Description</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div id="empty">No results found.</div>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 <a href="https://samueljeanlowe.com">samueljeanlowe.com</a>
+</footer>
+
+<script>
+const data = [
+  // ── OS & Platforms ──
+  { name: "Debian",             url: "https://www.debian.org",               desc: "Stable Linux distribution for desktops and servers",         tags: ["Open-source"] },
+  { name: "FreeBSD",            url: "https://www.freebsd.org",              desc: "Unix-like OS known for reliability and performance",         tags: ["Open-source"] },
+  { name: "Astra Linux",        url: "https://astralinux.ru",                desc: "Russian secure Linux distribution for government use",       tags: ["Open-source", "RU"] },
+  { name: "Kylin OS",           url: "https://www.kylinos.cn",               desc: "Chinese Linux OS developed for national security",           tags: ["Open-source", "CN"] },
+  // ── AI ──
+  { name: "DeepSeek",           url: "https://www.deepseek.com",             desc: "Chinese open-weight AI assistant and coding model",          tags: ["CN"] },
+  { name: "Claude",             url: "https://claude.ai",                    desc: "AI assistant by Anthropic focused on safety and nuance",     tags: [] },
+  { name: "DeepL",              url: "https://www.deepl.com",                desc: "High-accuracy neural machine translation service",           tags: [] },
+  { name: "Perplexity AI",      url: "https://www.perplexity.ai",            desc: "AI-powered answer engine with real-time web search",        tags: [] },
+  { name: "Midjourney",         url: "https://www.midjourney.com",           desc: "AI image generation from text prompts",                     tags: [] },
+  { name: "Stable Diffusion",   url: "https://stablediffusionweb.com",       desc: "Open-source AI image synthesis model",                      tags: ["Open-source"] },
+  { name: "ElevenLabs",         url: "https://elevenlabs.io",                desc: "AI voice cloning and text-to-speech platform",              tags: [] },
+  { name: "Cursor",             url: "https://www.cursor.com",               desc: "AI-first code editor built on VS Code",                     tags: [] },
+  // ── Browsers ──
+  { name: "Brave",              url: "https://brave.com",                    desc: "Privacy-first browser with built-in ad blocker",            tags: ["Open-source"] },
+  // ── Search engines ──
+  { name: "Qwant",              url: "https://www.qwant.com",                desc: "French privacy-respecting search engine",                   tags: ["FR"] },
+  { name: "Startpage",          url: "https://www.startpage.com",            desc: "Anonymous Google results without tracking",                 tags: [] },
+  { name: "Yandex Search",      url: "https://www.yandex.com",               desc: "Russian search engine with strong Cyrillic indexing",       tags: ["RU"] },
+  // ── Messaging ──
+  { name: "Telegram",           url: "https://telegram.org",                 desc: "Cloud-based messaging with large groups and bots",          tags: [] },
+  { name: "Signal",             url: "https://signal.org",                   desc: "End-to-end encrypted private messenger",                    tags: ["Open-source"] },
+  { name: "WeChat",             url: "https://www.wechat.com",               desc: "Chinese all-in-one messaging and payments super-app",       tags: ["CN"] },
+  { name: "Session",            url: "https://getsession.org",               desc: "Decentralized, anonymous messaging with no phone number",   tags: ["Open-source"] },
+  { name: "Matrix + Element",   url: "https://element.io",                   desc: "Decentralized federated chat protocol and client",          tags: ["Open-source"] },
+  { name: "Mattermost",         url: "https://mattermost.com",               desc: "Self-hosted team messaging platform",                       tags: ["Open-source"] },
+  { name: "Mumble",             url: "https://www.mumble.com",               desc: "Low-latency open-source voice chat",                        tags: ["Open-source"] },
+  // ── Email ──
+  { name: "Yandex Mail",        url: "https://mail.yandex.com",              desc: "Russian email service with generous storage",               tags: ["RU"] },
+  { name: "Onion Mail",         url: "https://onionmail.org",                desc: "Anonymous email service accessible via Tor",               tags: ["Open-source"] },
+  { name: "Mautic",             url: "https://www.mautic.org",               desc: "Self-hosted open-source marketing automation",             tags: ["Open-source"] },
+  // ── Maps ──
+  { name: "OpenStreetMap",      url: "https://www.openstreetmap.org",        desc: "Community-built free world map",                           tags: ["Open-source"] },
+  { name: "Yandex Maps",        url: "https://yandex.com/maps",              desc: "Russian mapping service with detailed CIS coverage",        tags: ["RU"] },
+  // ── Productivity & Office ──
+  { name: "LibreOffice",        url: "https://www.libreoffice.org",          desc: "Full-featured open-source office suite",                   tags: ["Open-source"] },
+  { name: "Nextcloud",          url: "https://nextcloud.com",                desc: "Self-hosted file sync, calendar and collaboration",         tags: ["Open-source"] },
+  { name: "Trello",             url: "https://trello.com",                   desc: "Visual kanban-style project management boards",            tags: [] },
+  { name: "n8n",                url: "https://n8n.io",                       desc: "Self-hostable workflow automation tool",                    tags: ["Open-source"] },
+  { name: "Huginn",             url: "https://github.com/huginn/huginn",     desc: "Self-hosted agent system for automated tasks",             tags: ["Open-source"] },
+  { name: "CiviCRM",            url: "https://civicrm.org",                  desc: "Open-source CRM for nonprofits and NGOs",                  tags: ["Open-source"] },
+  { name: "Bitwarden",          url: "https://bitwarden.com",                desc: "Open-source password manager with cloud sync",             tags: ["Open-source"] },
+  { name: "Yandex Disk",        url: "https://disk.yandex.com",              desc: "Russian cloud storage with 10 GB free",                    tags: ["RU"] },
+  { name: "Yandex Documents",   url: "https://docs.yandex.ru",               desc: "Russian online document editor similar to Google Docs",    tags: ["RU"] },
+  { name: "Mega",               url: "https://mega.io",                      desc: "End-to-end encrypted cloud storage",                       tags: [] },
+  // ── Payment ──
+  { name: "Bitcoin",            url: "https://bitcoin.org",                  desc: "Decentralized peer-to-peer cryptocurrency",                tags: ["Open-source"] },
+  { name: "Monero",             url: "https://www.getmonero.org",            desc: "Privacy-focused anonymous cryptocurrency",                 tags: ["Open-source"] },
+  // ── App stores ──
+  { name: "F-Droid",            url: "https://f-droid.org",                  desc: "Open-source Android app repository",                      tags: ["Open-source"] },
+  { name: "NashStore",          url: "https://nashstore.ru",                  desc: "Russian alternative app store for Android",               tags: ["RU"] },
+  { name: "Huawei AppGallery",  url: "https://appgallery.huawei.com",        desc: "Huawei's official app distribution platform",             tags: ["CN", "Huawei AppGallery"] },
+  // ── Cloud ──
+  { name: "Yandex Cloud",       url: "https://cloud.yandex.com",             desc: "Russian cloud infrastructure and managed services",        tags: ["RU"] },
+  { name: "VK Cloud",           url: "https://cloud.vk.com",                 desc: "Russian cloud platform by VK Group",                      tags: ["RU"] },
+  { name: "Alibaba Cloud",      url: "https://www.alibabacloud.com",         desc: "Chinese hyperscale cloud computing platform",             tags: ["CN"] },
+  { name: "FlokiNET",           url: "https://flokinet.is",                  desc: "Privacy-friendly offshore hosting provider",              tags: [] },
+  { name: "Njalla",             url: "https://njal.la",                      desc: "Anonymous domain registration and VPS service",           tags: [] },
+  // ── Dev tools ──
+  { name: "GitFlic",            url: "https://gitflic.ru",                   desc: "Russian self-hosted Git code repository platform",        tags: ["RU"] },
+  { name: "Gitee",              url: "https://gitee.com",                    desc: "Chinese Git hosting and DevOps platform",                 tags: ["CN"] },
+  { name: "Sublime Text",       url: "https://www.sublimetext.com",          desc: "Fast and lightweight code and text editor",               tags: [] },
+  { name: "Matomo",             url: "https://matomo.org",                   desc: "Self-hosted web analytics platform",                      tags: ["Open-source"] },
+  { name: "Yandex Metrica",     url: "https://metrica.yandex.com",           desc: "Russian web analytics with heatmaps and session replay",  tags: ["RU"] },
+  { name: "W3C Validator",      url: "https://validator.w3.org",             desc: "Official HTML and CSS markup validation tool",            tags: [] },
+  { name: "JSBeautifier",       url: "https://jsbeautifier.org",             desc: "Online JavaScript, CSS and HTML formatter",              tags: ["Open-source"] },
+  { name: "JSONLint",           url: "https://jsonlint.com",                 desc: "JSON syntax validator and formatter",                    tags: [] },
+  { name: "Regex101",           url: "https://regex101.com",                 desc: "Interactive regular expression tester and debugger",     tags: [] },
+  { name: "UNetbootin",         url: "https://unetbootin.github.io",         desc: "Creates bootable USB drives from ISO images",            tags: ["Open-source"] },
+  // ── CRM ──
+  { name: "Kommo",              url: "https://www.kommo.com",                desc: "Russian conversational CRM for sales teams",             tags: ["RU"] },
+  { name: "Bitrix24",           url: "https://www.bitrix24.fr",              desc: "Russian all-in-one CRM, tasks and intranet platform",    tags: ["RU"] },
+  // ── Graphics ──
+  { name: "GIMP",               url: "https://www.gimp.org",                 desc: "Open-source raster image editor",                       tags: ["Open-source"] },
+  { name: "Inkscape",           url: "https://inkscape.org",                 desc: "Open-source vector graphics editor",                    tags: ["Open-source"] },
+  { name: "Scribus",            url: "https://wiki.scribus.net/canvas/Scribus", desc: "Open-source desktop publishing and layout tool",    tags: ["Open-source"] },
+  { name: "Canva",              url: "https://www.canva.com",                desc: "Online drag-and-drop design platform",                  tags: [] },
+  { name: "Figma",              url: "https://www.figma.com",                desc: "Collaborative UI/UX design and prototyping tool",       tags: [] },
+  { name: "yEd",                url: "https://www.yworks.com/products/yed",  desc: "Diagram and graph editor for flowcharts and networks",  tags: [] },
+  // ── Video ──
+  { name: "Odysee",             url: "https://odysee.com",                   desc: "Decentralized video platform on the LBRY blockchain",   tags: ["Open-source"] },
+  { name: "Rutube",             url: "https://rutube.ru",                    desc: "Russian state-affiliated video hosting platform",       tags: ["RU"] },
+  { name: "VK",                 url: "https://vk.com",                       desc: "Russian social network with video and music",           tags: ["RU"] },
+  { name: "CapCut",             url: "https://www.capcut.com",               desc: "Chinese mobile-first short-form video editor",         tags: ["CN"] },
+  { name: "Captions",           url: "https://www.captions.ai",              desc: "AI-powered auto-captioning for videos",                tags: [] },
+  { name: "YouTube Transcript", url: "https://youtubetranscript.com",        desc: "Extract and download transcripts from YouTube videos", tags: [] },
+  // ── Audio ──
+  { name: "VLC Media Player",   url: "https://vlc-media-player.org",         desc: "Universal open-source media player (VideoLAN / FR)",   tags: ["Open-source", "FR"] },
+  { name: "Audacity",           url: "https://audacityteam.org",             desc: "Free multi-track audio editor and recorder",          tags: ["Open-source"] },
+  { name: "VK Music",           url: "https://vk.com/music",                 desc: "Russian music streaming integrated in VK",            tags: ["RU"] },
+  { name: "Yandex Music",       url: "https://music.yandex.com",             desc: "Russian music streaming service by Yandex",           tags: ["RU"] },
+  // ── OSINT ──
+  { name: "Have I Been Pwned",  url: "https://haveibeenpwned.com",           desc: "Check if your email appeared in data breaches",        tags: [] },
+  { name: "Epieos",             url: "https://epieos.com",                   desc: "OSINT lookup for emails and phone numbers",            tags: [] },
+  { name: "Wayback Machine",    url: "https://archive.org/web",              desc: "Browse archived historical snapshots of websites",     tags: [] },
+  { name: "Maltego",            url: "https://www.maltego.com",              desc: "Visual link analysis tool for OSINT investigations",   tags: [] },
+  { name: "Maigret",            url: "https://github.com/soxoj/maigret",     desc: "Username search across hundreds of social platforms",  tags: ["Open-source"] },
+  { name: "WhatsMyName",        url: "https://whatsmyname.app",              desc: "Username enumeration across online services",         tags: ["Open-source"] },
+  { name: "PimEyes",            url: "https://pimeyes.com",                  desc: "Reverse face search engine using AI",                 tags: [] },
+  { name: "Yandex Images",      url: "https://yandex.com/images",            desc: "Reverse image search with strong facial recognition", tags: ["RU"] },
+  // ── Privacy & Security ──
+  { name: "Tor Project",        url: "https://www.torproject.org",           desc: "Anonymity network and privacy browser",               tags: ["Open-source"] },
+  { name: "Tails OS",           url: "https://tails.boum.org",               desc: "Live OS routed through Tor for anonymity",            tags: ["Open-source"] },
+  { name: "Privacy Tools",      url: "https://www.privacytools.io",          desc: "Curated guide to privacy software and services",      tags: [] },
+  { name: "Surveillance Self-Defense", url: "https://ssd.eff.org",          desc: "EFF's guide to protecting yourself from surveillance", tags: [] },
+  { name: "Open Source Alternatives", url: "https://www.opensourcealternative.to", desc: "Directory of open-source replacements for proprietary tools", tags: ["Open-source"] },
+  { name: "Lulu (Mac Firewall)",url: "https://objective-see.com/products/lulu.html", desc: "Free macOS firewall to block outbound connections",  tags: ["Open-source"] },
+  // ── Commerce ──
+  { name: "Temu",               url: "https://www.temu.com",                 desc: "Chinese low-cost global e-commerce marketplace",      tags: ["CN"] },
+  { name: "AliExpress",         url: "https://www.aliexpress.com",           desc: "Chinese retail marketplace for international buyers",  tags: ["CN"] },
+  { name: "Alibaba",            url: "https://www.alibaba.com",              desc: "Chinese B2B wholesale trade platform",                tags: ["CN"] },
+  // ── Transport ──
+  { name: "G7 (taxi)",          url: "https://www.g7.fr",                    desc: "French taxi and ride-hailing network",                tags: ["FR"] },
+  { name: "Yandex Go",          url: "https://go.yandex",                    desc: "Russian ride-hailing and delivery super-app",         tags: ["RU"] },
+  { name: "CoopCycle",          url: "https://coopcycle.org",                desc: "French cooperative platform for local bike delivery",  tags: ["Open-source", "FR"] },
+  { name: "BlaBlaCar",          url: "https://www.blablacar.com",            desc: "French long-distance carpooling platform",            tags: ["FR"] },
+  { name: "Trainline",          url: "https://www.thetrainline.com",         desc: "European train and bus ticket booking service",       tags: [] },
+  // ── Books ──
+  { name: "Z-Library",          url: "https://en.zlibrary-fr.se",            desc: "Largest online library of books and articles",        tags: [] },
+  { name: "Wikisource",         url: "https://wikisource.org",               desc: "Free library of public domain texts",                 tags: ["Open-source"] },
+  { name: "Calibre",            url: "https://calibre-ebook.com",            desc: "Open-source e-book manager and converter",           tags: ["Open-source"] },
+  { name: "Archive.org Books",  url: "https://archive.org/details/books",    desc: "Free digital lending library of scanned books",      tags: [] },
+  // ── SEO & Marketing ──
+  { name: "Google Search Console", url: "https://search.google.com/search-console", desc: "Monitor and optimize your site's Google presence", tags: [] },
+  { name: "PageSpeed Insights", url: "https://pagespeed.web.dev",            desc: "Analyze and improve web page loading performance",    tags: [] },
+  { name: "SendGrid",           url: "https://sendgrid.com",                 desc: "Cloud-based transactional email delivery service",    tags: [] },
+  // ── Classifieds & Real Estate ──
+  { name: "LeBonCoin",          url: "https://www.leboncoin.fr",             desc: "France's leading classifieds and second-hand marketplace", tags: ["FR"] },
+  { name: "Vide-Greniers.org",  url: "https://vide-greniers.org",            desc: "French directory of flea markets and garage sales",   tags: ["FR"] },
+  { name: "PAP",                url: "https://www.pap.fr",                   desc: "French real estate listings without agent fees",      tags: ["FR"] },
+  { name: "Gensdeconfiance",    url: "https://gensdeconfiance.com",          desc: "French trusted community marketplace",                tags: ["FR"] },
+  { name: "Ozon",               url: "https://www.ozon.ru",                  desc: "One of Russia's largest e-commerce platforms",        tags: ["RU"] },
+  { name: "Yandex Market",      url: "https://market.yandex.ru",             desc: "Russian price comparison and online shopping service", tags: ["RU"] },
+  // ── Learning ──
+  { name: "Codecademy",         url: "https://www.codecademy.com",           desc: "Interactive coding lessons for beginners",            tags: [] },
+  { name: "Coursera",           url: "https://www.coursera.org",             desc: "Online courses from universities and companies",      tags: [] },
+  // ── Social ──
+  { name: "Mastodon",           url: "https://joinmastodon.org",             desc: "Federated open-source microblogging network",         tags: ["Open-source"] },
+  { name: "Gab",                url: "https://gab.com",                      desc: "Free-speech focused social network",                  tags: [] },
+  // ── Genealogy ──
+  { name: "Geneanet",           url: "https://www.geneanet.org",             desc: "French genealogy platform with millions of trees",    tags: ["FR"] },
+  { name: "Filae",              url: "https://www.filae.com",                desc: "French genealogy service with historical archives",   tags: ["FR"] },
+  // ── Misc utilities ──
+  { name: "Skyscanner",         url: "https://www.skyscanner.com",           desc: "Global flight, hotel and car rental search engine",   tags: [] },
+  { name: "Yandex Translate",   url: "https://translate.yandex.com",         desc: "Russian neural machine translation service",         tags: ["RU"] },
+  { name: "Android File Transfer", url: "https://www.android.com/filetransfer", desc: "Transfer files between Android and macOS",       tags: [] },
+  { name: "Meetup",             url: "https://www.meetup.com",               desc: "Platform to find and join local interest groups",     tags: [] },
+  { name: "Neo-nomade",         url: "https://www.neo-nomade.com",           desc: "French coworking space search platform",             tags: ["FR"] },
+  { name: "Superprof",          url: "https://www.superprof.fr",             desc: "French tutoring marketplace connecting tutors and students", tags: ["FR"] },
+];
+
+const TAG_META = {
+  "CN":                { cls: "tag-CN",  label: "CN" },
+  "RU":                { cls: "tag-RU",  label: "RU" },
+  "FR":                { cls: "tag-FR",  label: "FR" },
+  "Open-source":       { cls: "tag-OSS", label: "Open-source" },
+  "Huawei AppGallery": { cls: "tag-HW",  label: "Huawei AppGallery" },
+};
+
+let activeTag = null;
+
+const tbody   = document.getElementById("tbody");
+const search  = document.getElementById("search");
+const counter = document.getElementById("counter");
+const emptyEl = document.getElementById("empty");
+
+function render() {
+  tbody.innerHTML = "";
+  data.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.dataset.tags = JSON.stringify(item.tags);
+    tr.dataset.name = item.name.toLowerCase();
+    tr.dataset.desc = (item.desc || "").toLowerCase();
+    const tagsHtml = item.tags.map(t => {
+      const m = TAG_META[t] || { cls: "", label: t };
+      return `<span class="tag ${m.cls}">${m.label}</span>`;
+    }).join("");
+    tr.innerHTML = `
+      <td>${item.name}</td>
+      <td><a href="${item.url}" target="_blank" rel="noopener">${item.url}</a></td>
+      <td>${item.desc || ""}</td>
+      <td><div class="tags">${tagsHtml}</div></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  filterRows();
+}
+
+function filterRows() {
+  const q = search.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll("#tbody tr").forEach(tr => {
+    const tags = JSON.parse(tr.dataset.tags);
+    const matchTag    = !activeTag || tags.includes(activeTag);
+    const matchSearch = !q || tr.dataset.name.includes(q) ||
+      tr.dataset.desc.includes(q) ||
+      (tr.querySelector("a")?.href || "").toLowerCase().includes(q);
+    if (matchTag && matchSearch) { tr.classList.remove("hidden"); visible++; }
+    else { tr.classList.add("hidden"); }
+  });
+  counter.textContent = `${visible} tool${visible !== 1 ? "s" : ""}`;
+  emptyEl.style.display = visible === 0 ? "block" : "none";
+}
+
+document.querySelectorAll(".filter-btn[data-tag]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tag = btn.dataset.tag;
+    if (activeTag === tag) {
+      activeTag = null;
+      btn.classList.remove("active");
+    } else {
+      activeTag = tag;
+      document.querySelectorAll(".filter-btn[data-tag]").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    }
+    filterRows();
+  });
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  activeTag = null;
+  search.value = "";
+  document.querySelectorAll(".filter-btn[data-tag]").forEach(b => b.classList.remove("active"));
+  filterRows();
+});
+
+search.addEventListener("input", filterRows);
+render();
+</script>
+</body>
+</html>
