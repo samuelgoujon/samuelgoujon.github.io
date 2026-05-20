@@ -278,12 +278,10 @@
 
 <script>
 const data = [
-  // ── OS & Platforms ──
   { name: "Debian",             url: "https://www.debian.org",               desc: "Stable Linux distribution for desktops and servers",         tags: ["Open-source"] },
   { name: "FreeBSD",            url: "https://www.freebsd.org",              desc: "Unix-like OS known for reliability and performance",         tags: ["Open-source"] },
   { name: "Astra Linux",        url: "https://astralinux.ru",                desc: "Russian secure Linux distribution for government use",       tags: ["Open-source", "RU"] },
   { name: "Kylin OS",           url: "https://www.kylinos.cn",               desc: "Chinese Linux OS developed for national security",           tags: ["Open-source", "CN"] },
-  // ── AI ──
   { name: "DeepSeek",           url: "https://www.deepseek.com",             desc: "Chinese open-weight AI assistant and coding model",          tags: ["CN"] },
   { name: "Claude",             url: "https://claude.ai",                    desc: "AI assistant by Anthropic focused on safety and nuance",     tags: [] },
   { name: "DeepL",              url: "https://www.deepl.com",                desc: "High-accuracy neural machine translation service",           tags: [] },
@@ -291,14 +289,10 @@ const data = [
   { name: "Midjourney",         url: "https://www.midjourney.com",           desc: "AI image generation from text prompts",                     tags: [] },
   { name: "Stable Diffusion",   url: "https://stablediffusionweb.com",       desc: "Open-source AI image synthesis model",                      tags: ["Open-source"] },
   { name: "ElevenLabs",         url: "https://elevenlabs.io",                desc: "AI voice cloning and text-to-speech platform",              tags: [] },
-  { name: "Cursor",             url: "https://www.cursor.com",               desc: "AI-first code editor built on VS Code",                     tags: [] },
-  // ── Browsers ──
   { name: "Brave",              url: "https://brave.com",                    desc: "Privacy-first browser with built-in ad blocker",            tags: ["Open-source"] },
-  // ── Search engines ──
   { name: "Qwant",              url: "https://www.qwant.com",                desc: "French privacy-respecting search engine",                   tags: ["FR"] },
   { name: "Startpage",          url: "https://www.startpage.com",            desc: "Anonymous Google results without tracking",                 tags: [] },
   { name: "Yandex Search",      url: "https://www.yandex.com",               desc: "Russian search engine with strong Cyrillic indexing",       tags: ["RU"] },
-  // ── Messaging ──
   { name: "Telegram",           url: "https://telegram.org",                 desc: "Cloud-based messaging with large groups and bots",          tags: [] },
   { name: "Signal",             url: "https://signal.org",                   desc: "End-to-end encrypted private messenger",                    tags: ["Open-source"] },
   { name: "WeChat",             url: "https://www.wechat.com",               desc: "Chinese all-in-one messaging and payments super-app",       tags: ["CN"] },
@@ -306,14 +300,11 @@ const data = [
   { name: "Matrix + Element",   url: "https://element.io",                   desc: "Decentralized federated chat protocol and client",          tags: ["Open-source"] },
   { name: "Mattermost",         url: "https://mattermost.com",               desc: "Self-hosted team messaging platform",                       tags: ["Open-source"] },
   { name: "Mumble",             url: "https://www.mumble.com",               desc: "Low-latency open-source voice chat",                        tags: ["Open-source"] },
-  // ── Email ──
   { name: "Yandex Mail",        url: "https://mail.yandex.com",              desc: "Russian email service with generous storage",               tags: ["RU"] },
   { name: "Onion Mail",         url: "https://onionmail.org",                desc: "Anonymous email service accessible via Tor",               tags: ["Open-source"] },
   { name: "Mautic",             url: "https://www.mautic.org",               desc: "Self-hosted open-source marketing automation",             tags: ["Open-source"] },
-  // ── Maps ──
   { name: "OpenStreetMap",      url: "https://www.openstreetmap.org",        desc: "Community-built free world map",                           tags: ["Open-source"] },
   { name: "Yandex Maps",        url: "https://yandex.com/maps",              desc: "Russian mapping service with detailed CIS coverage",        tags: ["RU"] },
-  // ── Productivity & Office ──
   { name: "LibreOffice",        url: "https://www.libreoffice.org",          desc: "Full-featured open-source office suite",                   tags: ["Open-source"] },
   { name: "Nextcloud",          url: "https://nextcloud.com",                desc: "Self-hosted file sync, calendar and collaboration",         tags: ["Open-source"] },
   { name: "Trello",             url: "https://trello.com",                   desc: "Visual kanban-style project management boards",            tags: [] },
@@ -324,20 +315,16 @@ const data = [
   { name: "Yandex Disk",        url: "https://disk.yandex.com",              desc: "Russian cloud storage with 10 GB free",                    tags: ["RU"] },
   { name: "Yandex Documents",   url: "https://docs.yandex.ru",               desc: "Russian online document editor similar to Google Docs",    tags: ["RU"] },
   { name: "Mega",               url: "https://mega.io",                      desc: "End-to-end encrypted cloud storage",                       tags: [] },
-  // ── Payment ──
   { name: "Bitcoin",            url: "https://bitcoin.org",                  desc: "Decentralized peer-to-peer cryptocurrency",                tags: ["Open-source"] },
   { name: "Monero",             url: "https://www.getmonero.org",            desc: "Privacy-focused anonymous cryptocurrency",                 tags: ["Open-source"] },
-  // ── App stores ──
   { name: "F-Droid",            url: "https://f-droid.org",                  desc: "Open-source Android app repository",                      tags: ["Open-source"] },
   { name: "NashStore",          url: "https://nashstore.ru",                  desc: "Russian alternative app store for Android",               tags: ["RU"] },
   { name: "Huawei AppGallery",  url: "https://appgallery.huawei.com",        desc: "Huawei's official app distribution platform",             tags: ["CN", "Huawei AppGallery"] },
-  // ── Cloud ──
   { name: "Yandex Cloud",       url: "https://cloud.yandex.com",             desc: "Russian cloud infrastructure and managed services",        tags: ["RU"] },
   { name: "VK Cloud",           url: "https://cloud.vk.com",                 desc: "Russian cloud platform by VK Group",                      tags: ["RU"] },
   { name: "Alibaba Cloud",      url: "https://www.alibabacloud.com",         desc: "Chinese hyperscale cloud computing platform",             tags: ["CN"] },
   { name: "FlokiNET",           url: "https://flokinet.is",                  desc: "Privacy-friendly offshore hosting provider",              tags: [] },
   { name: "Njalla",             url: "https://njal.la",                      desc: "Anonymous domain registration and VPS service",           tags: [] },
-  // ── Dev tools ──
   { name: "GitFlic",            url: "https://gitflic.ru",                   desc: "Russian self-hosted Git code repository platform",        tags: ["RU"] },
   { name: "Gitee",              url: "https://gitee.com",                    desc: "Chinese Git hosting and DevOps platform",                 tags: ["CN"] },
   { name: "Sublime Text",       url: "https://www.sublimetext.com",          desc: "Fast and lightweight code and text editor",               tags: [] },
@@ -348,29 +335,20 @@ const data = [
   { name: "JSONLint",           url: "https://jsonlint.com",                 desc: "JSON syntax validator and formatter",                    tags: [] },
   { name: "Regex101",           url: "https://regex101.com",                 desc: "Interactive regular expression tester and debugger",     tags: [] },
   { name: "UNetbootin",         url: "https://unetbootin.github.io",         desc: "Creates bootable USB drives from ISO images",            tags: ["Open-source"] },
-  // ── CRM ──
   { name: "Kommo",              url: "https://www.kommo.com",                desc: "Russian conversational CRM for sales teams",             tags: ["RU"] },
   { name: "Bitrix24",           url: "https://www.bitrix24.fr",              desc: "Russian all-in-one CRM, tasks and intranet platform",    tags: ["RU"] },
-  // ── Graphics ──
   { name: "GIMP",               url: "https://www.gimp.org",                 desc: "Open-source raster image editor",                       tags: ["Open-source"] },
   { name: "Inkscape",           url: "https://inkscape.org",                 desc: "Open-source vector graphics editor",                    tags: ["Open-source"] },
   { name: "Scribus",            url: "https://wiki.scribus.net/canvas/Scribus", desc: "Open-source desktop publishing and layout tool",    tags: ["Open-source"] },
-  { name: "Canva",              url: "https://www.canva.com",                desc: "Online drag-and-drop design platform",                  tags: [] },
-  { name: "Figma",              url: "https://www.figma.com",                desc: "Collaborative UI/UX design and prototyping tool",       tags: [] },
   { name: "yEd",                url: "https://www.yworks.com/products/yed",  desc: "Diagram and graph editor for flowcharts and networks",  tags: [] },
-  // ── Video ──
   { name: "Odysee",             url: "https://odysee.com",                   desc: "Decentralized video platform on the LBRY blockchain",   tags: ["Open-source"] },
   { name: "Rutube",             url: "https://rutube.ru",                    desc: "Russian state-affiliated video hosting platform",       tags: ["RU"] },
   { name: "VK",                 url: "https://vk.com",                       desc: "Russian social network with video and music",           tags: ["RU"] },
-  { name: "CapCut",             url: "https://www.capcut.com",               desc: "Chinese mobile-first short-form video editor",         tags: ["CN"] },
-  { name: "Captions",           url: "https://www.captions.ai",              desc: "AI-powered auto-captioning for videos",                tags: [] },
   { name: "YouTube Transcript", url: "https://youtubetranscript.com",        desc: "Extract and download transcripts from YouTube videos", tags: [] },
-  // ── Audio ──
   { name: "VLC Media Player",   url: "https://vlc-media-player.org",         desc: "Universal open-source media player (VideoLAN / FR)",   tags: ["Open-source", "FR"] },
   { name: "Audacity",           url: "https://audacityteam.org",             desc: "Free multi-track audio editor and recorder",          tags: ["Open-source"] },
   { name: "VK Music",           url: "https://vk.com/music",                 desc: "Russian music streaming integrated in VK",            tags: ["RU"] },
   { name: "Yandex Music",       url: "https://music.yandex.com",             desc: "Russian music streaming service by Yandex",           tags: ["RU"] },
-  // ── OSINT ──
   { name: "Have I Been Pwned",  url: "https://haveibeenpwned.com",           desc: "Check if your email appeared in data breaches",        tags: [] },
   { name: "Epieos",             url: "https://epieos.com",                   desc: "OSINT lookup for emails and phone numbers",            tags: [] },
   { name: "Wayback Machine",    url: "https://archive.org/web",              desc: "Browse archived historical snapshots of websites",     tags: [] },
@@ -379,55 +357,32 @@ const data = [
   { name: "WhatsMyName",        url: "https://whatsmyname.app",              desc: "Username enumeration across online services",         tags: ["Open-source"] },
   { name: "PimEyes",            url: "https://pimeyes.com",                  desc: "Reverse face search engine using AI",                 tags: [] },
   { name: "Yandex Images",      url: "https://yandex.com/images",            desc: "Reverse image search with strong facial recognition", tags: ["RU"] },
-  // ── Privacy & Security ──
   { name: "Tor Project",        url: "https://www.torproject.org",           desc: "Anonymity network and privacy browser",               tags: ["Open-source"] },
   { name: "Tails OS",           url: "https://tails.boum.org",               desc: "Live OS routed through Tor for anonymity",            tags: ["Open-source"] },
   { name: "Privacy Tools",      url: "https://www.privacytools.io",          desc: "Curated guide to privacy software and services",      tags: [] },
   { name: "Surveillance Self-Defense", url: "https://ssd.eff.org",          desc: "EFF's guide to protecting yourself from surveillance", tags: [] },
-  { name: "Open Source Alternatives", url: "https://www.opensourcealternative.to", desc: "Directory of open-source replacements for proprietary tools", tags: ["Open-source"] },
   { name: "Lulu (Mac Firewall)",url: "https://objective-see.com/products/lulu.html", desc: "Free macOS firewall to block outbound connections",  tags: ["Open-source"] },
-  // ── Commerce ──
   { name: "Temu",               url: "https://www.temu.com",                 desc: "Chinese low-cost global e-commerce marketplace",      tags: ["CN"] },
   { name: "AliExpress",         url: "https://www.aliexpress.com",           desc: "Chinese retail marketplace for international buyers",  tags: ["CN"] },
   { name: "Alibaba",            url: "https://www.alibaba.com",              desc: "Chinese B2B wholesale trade platform",                tags: ["CN"] },
-  // ── Transport ──
-  { name: "G7 (taxi)",          url: "https://www.g7.fr",                    desc: "French taxi and ride-hailing network",                tags: ["FR"] },
   { name: "Yandex Go",          url: "https://go.yandex",                    desc: "Russian ride-hailing and delivery super-app",         tags: ["RU"] },
   { name: "CoopCycle",          url: "https://coopcycle.org",                desc: "French cooperative platform for local bike delivery",  tags: ["Open-source", "FR"] },
-  { name: "BlaBlaCar",          url: "https://www.blablacar.com",            desc: "French long-distance carpooling platform",            tags: ["FR"] },
-  { name: "Trainline",          url: "https://www.thetrainline.com",         desc: "European train and bus ticket booking service",       tags: [] },
-  // ── Books ──
   { name: "Z-Library",          url: "https://en.zlibrary-fr.se",            desc: "Largest online library of books and articles",        tags: [] },
   { name: "Wikisource",         url: "https://wikisource.org",               desc: "Free library of public domain texts",                 tags: ["Open-source"] },
   { name: "Calibre",            url: "https://calibre-ebook.com",            desc: "Open-source e-book manager and converter",           tags: ["Open-source"] },
   { name: "Archive.org Books",  url: "https://archive.org/details/books",    desc: "Free digital lending library of scanned books",      tags: [] },
-  // ── SEO & Marketing ──
   { name: "Google Search Console", url: "https://search.google.com/search-console", desc: "Monitor and optimize your site's Google presence", tags: [] },
   { name: "PageSpeed Insights", url: "https://pagespeed.web.dev",            desc: "Analyze and improve web page loading performance",    tags: [] },
-  { name: "SendGrid",           url: "https://sendgrid.com",                 desc: "Cloud-based transactional email delivery service",    tags: [] },
-  // ── Classifieds & Real Estate ──
-  { name: "LeBonCoin",          url: "https://www.leboncoin.fr",             desc: "France's leading classifieds and second-hand marketplace", tags: ["FR"] },
   { name: "Vide-Greniers.org",  url: "https://vide-greniers.org",            desc: "French directory of flea markets and garage sales",   tags: ["FR"] },
-  { name: "PAP",                url: "https://www.pap.fr",                   desc: "French real estate listings without agent fees",      tags: ["FR"] },
   { name: "Gensdeconfiance",    url: "https://gensdeconfiance.com",          desc: "French trusted community marketplace",                tags: ["FR"] },
   { name: "Ozon",               url: "https://www.ozon.ru",                  desc: "One of Russia's largest e-commerce platforms",        tags: ["RU"] },
   { name: "Yandex Market",      url: "https://market.yandex.ru",             desc: "Russian price comparison and online shopping service", tags: ["RU"] },
-  // ── Learning ──
-  { name: "Codecademy",         url: "https://www.codecademy.com",           desc: "Interactive coding lessons for beginners",            tags: [] },
-  { name: "Coursera",           url: "https://www.coursera.org",             desc: "Online courses from universities and companies",      tags: [] },
-  // ── Social ──
   { name: "Mastodon",           url: "https://joinmastodon.org",             desc: "Federated open-source microblogging network",         tags: ["Open-source"] },
   { name: "Gab",                url: "https://gab.com",                      desc: "Free-speech focused social network",                  tags: [] },
-  // ── Genealogy ──
   { name: "Geneanet",           url: "https://www.geneanet.org",             desc: "French genealogy platform with millions of trees",    tags: ["FR"] },
   { name: "Filae",              url: "https://www.filae.com",                desc: "French genealogy service with historical archives",   tags: ["FR"] },
-  // ── Misc utilities ──
-  { name: "Skyscanner",         url: "https://www.skyscanner.com",           desc: "Global flight, hotel and car rental search engine",   tags: [] },
   { name: "Yandex Translate",   url: "https://translate.yandex.com",         desc: "Russian neural machine translation service",         tags: ["RU"] },
   { name: "Android File Transfer", url: "https://www.android.com/filetransfer", desc: "Transfer files between Android and macOS",       tags: [] },
-  { name: "Meetup",             url: "https://www.meetup.com",               desc: "Platform to find and join local interest groups",     tags: [] },
-  { name: "Neo-nomade",         url: "https://www.neo-nomade.com",           desc: "French coworking space search platform",             tags: ["FR"] },
-  { name: "Superprof",          url: "https://www.superprof.fr",             desc: "French tutoring marketplace connecting tutors and students", tags: ["FR"] },
 ];
 
 const TAG_META = {
